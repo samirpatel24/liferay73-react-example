@@ -13,7 +13,7 @@ export default class SingleRoom extends Component {
 
     this.state = {
       slug: this.props.match.params.slug,
-      defaultBcg
+      defaultBcg,
     };
   }
   static contextType = RoomContext;
@@ -40,7 +40,7 @@ export default class SingleRoom extends Component {
       extras,
       breakfast,
       pets,
-      images
+      images,
     } = room;
     const [mainImg, ...defaultImg] = images;
     return (

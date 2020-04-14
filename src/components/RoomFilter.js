@@ -46,7 +46,6 @@ export default function RoomFilter({ rooms }) {
     );
   });
 
-  console.log(types);
   return (
     <section className="filter-container">
       <Title title="search rooms" />

@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import items from "./data";
-import Client from "./Contentful";
-
-Client.getEntries({
-  content_type: "beachResortRoomExample",
-}).then((response) => console.log(response.items));
+import Liferay from "./Liferay";
+import BannerContent from "./context/bannercontent";
 const RoomContext = React.createContext();
+const domain = "https://webserver-liferaysamirpatel-dev.lfr.cloud";
 
 class RoomProvider extends Component {
   state = {
@@ -21,22 +18,33 @@ class RoomProvider extends Component {
     maxSize: 0,
     breakfast: false,
     pets: false,
+    liferaydata: [],
+    bannerContent: [],
   };
 
-  //getData
+  // static var domain_url = "";
+  //getBannerContent
+  getBannerContent = async () => {
+    var result = await BannerContent();
+    console.log(result.contentFields[0].value.data);
+    var title = result.contentFields[0].value.data;
+    var subTitle = result.contentFields[1].value.data;
+    var bannerImage = domain + result.contentFields[2].value.image.contentUrl;
+    const content = { title, subTitle, bannerImage };
 
-  getData = async () => {
+    this.setState({ bannerContent: content });
+  };
+
+  //getLiferayRoomData
+  getLiferayData = async () => {
     try {
-      let response = await Client.getEntries({
-        content_type: "beachResortRoomExample",
-        // order: "sys.createdAt",
-        order: "-fields.price",
-      });
+      var result = await Liferay();
 
-      console.log(response.items);
-      let rooms = this.formatData(response.items);
-      //console.log(rooms);
-      let featuredRooms = rooms.filter((room) => room.featured === true);
+      let rooms = this.formatLiferayData(result, domain);
+      rooms = rooms.sort(function (a, b) {
+        return a.price - b.price;
+      });
+      let featuredRooms = rooms.filter((room) => room.featured === "true");
       let maxPrice = Math.max(...rooms.map((item) => item.price));
       let maxSize = Math.max(...rooms.map((item) => item.size));
 
@@ -55,29 +63,64 @@ class RoomProvider extends Component {
   };
 
   componentDidMount() {
-    this.getData();
-    // let rooms = this.formatData(items);
-    // // console.log(rooms);
-    // let featuredRooms = rooms.filter((room) => room.featured === true);
-    // let maxPrice = Math.max(...rooms.map((item) => item.price));
-    // let maxSize = Math.max(...rooms.map((item) => item.size));
-
-    // this.setState({
-    //   rooms,
-    //   featuredRooms,
-    //   sortedRooms: rooms,
-    //   loading: false,
-    //   price: maxPrice,
-    //   maxPrice,
-    //   maxSize,
-    // });
+    this.getLiferayData();
+    this.getBannerContent();
   }
 
-  formatData(items) {
-    let tempItems = items.map((item) => {
-      let id = item.sys.id;
-      let images = item.fields.images.map((image) => image.fields.file.url);
-      let room = { ...item.fields, images, id };
+  formatLiferayData(data, domain_url) {
+    let tempItems = data.items.map((item) => {
+      let id = item.id;
+      let name = item.contentFields[0].value.data;
+      let slug = item.contentFields[1].value.data;
+      let price = parseInt(item.contentFields[2].value.data);
+      let type = item.contentFields[3].value.data;
+      let size = item.contentFields[4].value.data;
+      let capacity = parseInt(item.contentFields[5].value.data);
+      let pets = JSON.parse(item.contentFields[6].value.data);
+      let breakfast = JSON.parse(item.contentFields[7].value.data);
+      let featured = item.contentFields[8].value.data;
+      let description = item.contentFields[9].value.data;
+      let extras = JSON.parse(item.contentFields[10].value.data);
+      // console.log(
+      //   name +
+      //     " " +
+      //     slug +
+      //     " " +
+      //     price +
+      //     " " +
+      //     type +
+      //     " featured" +
+      //     featured +
+      //     " " +
+      //     breakfast +
+      //     " " +
+      //     pets
+      // );
+      let imagesObj = item.contentFields.filter(
+        (fieldData) => fieldData.name === "images"
+      );
+      let images = imagesObj.map((data) => {
+        //  console.log(
+        //   "document path" + domain_url + data.value.document.contentUrl
+        //  );
+        return domain_url + data.value.document.contentUrl;
+      });
+
+      let room = {
+        id,
+        name,
+        slug,
+        price,
+        type,
+        size,
+        capacity,
+        pets,
+        breakfast,
+        featured,
+        description,
+        extras,
+        images,
+      };
       return room;
     });
 
@@ -117,8 +160,8 @@ class RoomProvider extends Component {
     // all the rooms
     let tempRooms = [...rooms];
     //transform value
-    capacity = parseInt(capacity);
-    price = parseInt(price);
+    // capacity = parseInt(capacity);
+    //price = parseInt(price);
 
     //filter by type
     if (type !== "all") {
