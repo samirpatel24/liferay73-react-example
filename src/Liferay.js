@@ -7,7 +7,7 @@ const Liferay = async () => {
       headers: {
         Authorization: "Basic dGVzdDphZG1pbjEyMw==",
         "Access-Control-Allow-Origin": "*",
-        "cache-control": "no-cache",
+        // "cache-control": "no-cache",
       },
       redirect: "follow",
     };
