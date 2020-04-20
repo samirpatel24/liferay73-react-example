@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import defaultImg from "../images/defaultBcg.jpeg";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import Services from "../components/Services";
