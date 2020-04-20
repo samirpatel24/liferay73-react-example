@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import defaultImg from "../images/carousel/image2.jpg";
+import BlogList from "./BlogContent";
 import { Link } from "react-router-dom";
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "react-apollo";
+import StyledHero from "./styledHero";
 import { setContext } from "apollo-link-context";
-import SingleBlogContent from "../components/SingleBlogContent";
+//import { travelImg } from "../images/carousel/image2.jpg";
 const authLink = setContext((_, { headers }) => {
   return {
     headers: Object.assign({}, headers, {
@@ -30,25 +32,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
   defaultOptions,
 });
-export class SingleBlog extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
 
-    this.state = {
-      slug: this.props.match.params.slug,
-    };
-  }
+export class BlogDisplay extends Component {
   render() {
-    console.log("slug" + this.state.slug);
     return (
-      <div>
-        <ApolloProvider client={client}>
-          <SingleBlogContent id={this.state.slug} />
-        </ApolloProvider>
-      </div>
+      <ApolloProvider client={client}>
+        <BlogList />
+      </ApolloProvider>
     );
   }
 }
 
-export default SingleBlog;
+export default BlogDisplay;
