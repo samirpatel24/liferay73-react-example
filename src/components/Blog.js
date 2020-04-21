@@ -14,7 +14,7 @@ export default function Blog(props) {
   const datePublished = props.datePublished;
   console.log("key" + key);
   return (
-    <article className="room">
+    <article className="blog">
       <div className="img-container">
         <img src={imageUrl} alt="blogimage" />
         <div className="price-top">

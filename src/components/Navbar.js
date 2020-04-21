@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import logo from "../images/resortlogo.png";
-import { FaAlignRight } from "react-icons/fa";
+import { FaAlignJustify } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
@@ -25,7 +25,7 @@ export default class Navbar extends Component {
               className="nav-btn"
               onClick={this.handleToggle}
             >
-              <FaAlignRight className="nav-icon" />
+              <FaAlignJustify className="nav-icon" />
             </button>
           </div>
           <ul
