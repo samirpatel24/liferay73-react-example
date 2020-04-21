@@ -16,6 +16,7 @@ export default class SingleRoom extends Component {
       defaultBcg,
     };
   }
+
   static contextType = RoomContext;
   //componentDidMount() {}
   render() {
