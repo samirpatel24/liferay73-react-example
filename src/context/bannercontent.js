@@ -23,9 +23,9 @@ const getBannerContent = async () => {
 
     console.log(url);
 
-    result = await fetch(url, requestOptions).then((response) =>
-      response.json()
-    );
+    result = await fetch(url, requestOptions, {
+      mode: "no-cors", // 'cors' by default
+    }).then((response) => response.json());
   } catch (error) {
     console.log(error);
   }

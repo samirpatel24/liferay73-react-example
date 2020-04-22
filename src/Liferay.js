@@ -19,9 +19,9 @@ const Liferay = async () => {
       "/o/headless-delivery/v1.0/sites/" +
       siteId +
       "/structured-contents?filter=(contentStructureId eq 116154) ";
-    result = await fetch(url, requestOptions).then((response) =>
-      response.json()
-    );
+    result = await fetch(url, requestOptions, {
+      mode: "no-cors", // 'cors' by default
+    }).then((response) => response.json());
   } catch (error) {
     console.log(error);
   }
