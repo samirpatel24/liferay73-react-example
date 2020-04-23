@@ -1,1 +1,1 @@
-Beach Resort Application using React JS and Liferay DXP
+Liferay Resort Application using React JS and Liferay DXP
