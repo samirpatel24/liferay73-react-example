@@ -5,15 +5,15 @@ const getBannerContent = async () => {
       crossDomain: true,
       method: "GET",
       headers: {
-        Authorization: "Basic dGVzdDphZG1pbjEyMw==",
+        Authorization: process.env.REACT_APP_Authorization,
         "Access-Control-Allow-Origin": "*",
         "cache-control": "no-cache",
       },
       redirect: "follow",
     };
-    const domain_url = "https://webserver-liferaysamirpatel-dev.lfr.cloud";
-    const siteId = 116145;
-    const key = "119177";
+    const domain_url = process.env.REACT_APP_DOMAIN;
+    const siteId = process.env.REACT_APP_RESORTSITEID;
+    const key = process.env.REACT_APP_BANNERKEY;
     let url =
       domain_url +
       "/o/headless-delivery/v1.0/sites/" +

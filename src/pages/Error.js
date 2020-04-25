@@ -1,5 +1,5 @@
 import React from "react";
-import StyledHero from "../components/styledHero";
+import StyledHero from "../components/StyledHero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import Image from "../images/carousel/image2.jpg";

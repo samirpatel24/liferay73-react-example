@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import ClayLoadingIndicator from "@clayui/loading-indicator";
 import ClayAlert from "@clayui/alert";
 import Blog from "./Blog";
-const domain = "https://webserver-liferaysamirpatel-dev.lfr.cloud";
+const domain = process.env.REACT_APP_DOMAIN;
 // const { GraphQLClient } = require("graphql-request");
 
 // const AUTHORIZATION_TOKEN = "dGVzdDphZG1pbjEyMw==";
@@ -18,8 +18,8 @@ const domain = "https://webserver-liferaysamirpatel-dev.lfr.cloud";
 // );
 
 const getBlogsQuery = gql`
-  query {
-    blogPostings(siteKey: "116145") {
+  query blogPostings($sitekey: String!) {
+    blogPostings(siteKey: $sitekey) {
       items {
         alternativeHeadline
         articleBody
@@ -54,7 +54,13 @@ const getBlogsQuery = gql`
 `;
 
 export default function BlogContent() {
-  const { loading, error, data } = useQuery(getBlogsQuery);
+  var sitekey = process.env.REACT_APP_RESORTSITEID;
+  sitekey = "" + sitekey;
+  console.log("Site ID " + sitekey);
+
+  const { loading, error, data } = useQuery(getBlogsQuery, {
+    variables: { sitekey },
+  });
 
   if (loading) return <ClayLoadingIndicator />;
   if (error) {
@@ -79,12 +85,12 @@ export default function BlogContent() {
   const blogs = data.blogPostings.items.map(
     ({ id, headline, image, description, creator, datePublished }) => (
       <Blog
+        Id={id}
         title={headline}
         author={creator.name}
         description={description}
         image={domain + image.contentUrl}
         datePublished={datePublished}
-        id={id}
       />
     )
   );

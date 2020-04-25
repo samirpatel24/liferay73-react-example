@@ -5,7 +5,7 @@ import ClayLoadingIndicator from "@clayui/loading-indicator";
 import ClayAlert from "@clayui/alert";
 import Blog from "./Blog";
 
-const domain = "https://webserver-liferaysamirpatel-dev.lfr.cloud";
+const domain = process.env.REACT_APP_DOMAIN;
 
 //const id = "130185";
 const getBlogQuery = gql`

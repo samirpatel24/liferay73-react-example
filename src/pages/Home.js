@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Services from "../components/Services";
 import FeaturedRoom from "../components/FeaturedRooms";
 import { RoomContext } from "../Context";
-import StyledHero from "../components/styledHero";
+import StyledHero from "../components/StyledHero";
 export default function Home() {
   const { bannerContent } = useContext(RoomContext);
   console.log(bannerContent);

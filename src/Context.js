@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Liferay from "./Liferay";
-import BannerContent from "./context/bannercontent";
+import Liferay from "./context/Liferay";
+import BannerContent from "./context/BannerContent";
 const RoomContext = React.createContext();
-const domain = "https://webserver-liferaysamirpatel-dev.lfr.cloud";
+const domain = process.env.REACT_APP_DOMAIN;
 
 class RoomProvider extends Component {
   state = {

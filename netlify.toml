@@ -3,6 +3,11 @@
   to = "/index.html"
   status = 200
   
+ [build]
+  command = "yarn build && cd functions/node-fetch && yarn"
+  functions = "functions"
+  publish = "dist"
+  
   
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.

@@ -10,7 +10,7 @@ import SingleBlogContent from "../components/SingleBlogContent";
 const authLink = setContext((_, { headers }) => {
   return {
     headers: Object.assign({}, headers, {
-      Authorization: "Basic dGVzdDphZG1pbjEyMw==",
+      Authorization: process.env.REACT_APP_Authorization,
     }),
   };
 });
@@ -24,7 +24,7 @@ const defaultOptions = {
 const client = new ApolloClient({
   link: authLink.concat(
     new HttpLink({
-      uri: "https://webserver-liferaysamirpatel-dev.lfr.cloud/o/graphql",
+      uri: process.env.REACT_APP_DOMAIN + "/o/graphql",
     })
   ),
   cache: new InMemoryCache(),

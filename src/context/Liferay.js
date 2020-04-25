@@ -5,20 +5,23 @@ const Liferay = async () => {
       crossDomain: true,
       method: "GET",
       headers: {
-        Authorization: "Basic dGVzdDphZG1pbjEyMw==",
+        Authorization: process.env.REACT_APP_Authorization,
         "Access-Control-Allow-Origin": "*",
         // "cache-control": "no-cache",
       },
       redirect: "follow",
     };
-    const domain_url = "https://webserver-liferaysamirpatel-dev.lfr.cloud";
+    const domain_url = process.env.REACT_APP_DOMAIN;
     //const structuredId = 117744;
-    const siteId = 116145;
+    const siteId = process.env.REACT_APP_RESORTSITEID;
+    const roomstructureId = process.env.REACT_APP_ROOMSTRUCTUREID;
     let url =
       domain_url +
       "/o/headless-delivery/v1.0/sites/" +
       siteId +
-      "/structured-contents?filter=(contentStructureId eq 116154) ";
+      "/structured-contents?filter=(contentStructureId eq " +
+      roomstructureId +
+      ") ";
     result = await fetch(url, requestOptions, {
       mode: "no-cors", // 'cors' by default
     }).then((response) => response.json());

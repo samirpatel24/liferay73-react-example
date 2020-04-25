@@ -543,3 +543,81 @@ h6 {
 .blog:hover {
   box-shadow: var(--darkShadow);
 }
+
+/* Animation*/
+.fade-appear,
+.fade-enter {
+  z-index: 1;
+}
+.fade-appear p,
+.fade-enter p,
+.fade-appear h1,
+.fade-enter h1 {
+  opacity: 0;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
+}
+/* .fade-appear-active p,
+.fade-enter.fade-enter-active p {
+  opacity: 1;
+}
+.fade-appear-active p:nth-child(2),
+.fade-enter.fade-enter-active p:nth-child(2) {
+  transition: opacity 300ms linear 300ms;
+}
+.fade-appear-active p:nth-child(3),
+.fade-enter.fade-enter-active p:nth-child(3) {
+  transition: opacity 300ms linear 400ms;
+}
+.fade-appear-active p:nth-child(4),
+.fade-enter.fade-enter-active p:nth-child(4) {
+  transition: opacity 300ms linear 500ms;
+} */
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+
+.move {
+  position: fixed;
+  height: 100px;
+  width: 200px;
+  background-color: lavender;
+  transition: left 0.3s;
+}
+
+.fade-appear > .move[data-page="rooms"],
+.fade-enter > .move[data-page="rooms"] {
+  left: 0px;
+}
+
+.fade-appear > .move[data-page="home"],
+.fade-enter > .move[data-page="home"] {
+  left: 100px;
+}
+
+.fade-appear-active > .move,
+.fade-enter.fade-enter-active > .move {
+  left: 100px;
+}
+
+.fade-enter-done > .move[data-page="rooms"] {
+  left: 100px;
+}
+
+.fade-enter-done > .move[data-page="home"] {
+  left: 0px;
+}
+
+.fade-exit > .move {
+  opacity: 0;
+}
+.fade-exit.fade-exit-active > .move {
+  left: 100px;
+}

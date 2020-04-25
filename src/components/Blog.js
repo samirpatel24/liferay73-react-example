@@ -2,11 +2,10 @@ import React from "react";
 import ClayButton from "@clayui/button";
 import ClayCard from "@clayui/card";
 import TextTruncate from "react-text-truncate";
-import Moment from "react-moment";
 import { Link } from "react-router-dom";
 
 export default function Blog(props) {
-  const key = props.id;
+  const key = props.Id;
   const title = props.title;
   const author = props.author;
   const description = props.description;
@@ -26,28 +25,5 @@ export default function Blog(props) {
       </div>
       <p className="room-info ">{title}</p>
     </article>
-
-    // <div className="col-md">
-    //   <ClayCard>
-    //     <ClayCard.Body>
-    //       <ClayCard.Description displayType="title" className="big-title">
-    //         {title}
-    //       </ClayCard.Description>
-    //       <ClayCard.Description displayType="subtitle" title={author}>
-    //         {author} - <Moment fromNow>{datePublished}</Moment>
-    //       </ClayCard.Description>
-    //       <ClayCard.Description truncate={false} displayType="text">
-    //         <div dangerouslySetInnerHTML={{ __html: body }} />
-    //         {/* <TextTruncate
-    //           line={3}
-    //           element="span"
-    //           truncateText="…"
-    //           text={body}
-    //         /> */}
-    //       </ClayCard.Description>
-    //       {/* <ClayButton>Read</ClayButton> */}
-    //     </ClayCard.Body>
-    //   </ClayCard>
-    // </div>
   );
 }
