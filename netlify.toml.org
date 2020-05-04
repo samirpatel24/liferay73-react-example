@@ -4,9 +4,9 @@
   status = 200
   
  [build]
-  command = "yarn build && cd functions/node-fetch && yarn"
+  command = "npm run build"
   functions = "functions"
-  publish = ""
+  publish = "build"
   
   
 [[headers]]
