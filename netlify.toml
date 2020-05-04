@@ -6,7 +6,7 @@
  [build]
   command = "yarn build && cd functions/node-fetch && yarn"
   functions = "functions"
-  publish = "dist"
+  publish = ""
   
   
 [[headers]]
