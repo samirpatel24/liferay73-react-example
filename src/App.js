@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // import logo from "./logo.svg";
 import "./App.css";
