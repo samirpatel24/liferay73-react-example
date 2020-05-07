@@ -15,7 +15,7 @@ export default function Blog(props) {
   return (
     <article className="blog">
       <div className="img-container">
-        <img src={imageUrl} alt="blogimage" />
+        <img src={imageUrl} alt="blogimage" class="img-fluid" />
         <div className="price-top">
           <h6>{author}</h6>
         </div>

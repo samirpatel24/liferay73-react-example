@@ -61,11 +61,17 @@ export default function SingleBlogContent(props) {
   const author = data.blogPosting.creator.name;
 
   return (
-    <div className="single-blog">
-      <h4 className="single-blog-title">{title}</h4>
-      <img src={Image} alt="" />
-      <div dangerouslySetInnerHTML={{ __html: body }} />
-      <h4> By {author}</h4>
+    <div>
+      <h2 className="single-blog-title">{title}</h2>
+      <img src={Image} class="img-fluid mb-4" />
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">            
+            <div dangerouslySetInnerHTML={{ __html: body }} />
+            <h4> By {author}</h4>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
