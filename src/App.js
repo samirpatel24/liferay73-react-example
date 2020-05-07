@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
