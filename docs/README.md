@@ -1,3 +1,3 @@
 Liferay Resort Application using React JS and Liferay DXP
 
-Docs are [here](docs)
+Docs are [here](docs/README.md)
