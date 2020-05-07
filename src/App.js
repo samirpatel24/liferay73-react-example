@@ -1,7 +1,9 @@
+import 'bootstrap/dist/css/bootstrap.css';
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-
 
 // import logo from "./logo.svg";
 import "./App.css";
