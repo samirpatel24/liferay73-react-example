@@ -1,3 +1,5 @@
+**This is for Liferay DXP 7.3!!!**
+
 Liferay Resort Application using React JS and Liferay DXP
 
 To get the application working you can do the following:

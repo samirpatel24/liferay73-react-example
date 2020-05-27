@@ -26,10 +26,10 @@ class RoomProvider extends Component {
   //getBannerContent
   getBannerContent = async () => {
     var result = await BannerContent();
-    console.log(result.contentFields[0].value.data);
-    var title = result.contentFields[0].value.data;
-    var subTitle = result.contentFields[1].value.data;
-    var bannerImage = domain + result.contentFields[2].value.image.contentUrl;
+    console.log(result.contentFields[0].contentFieldValue.data);
+    var title = result.contentFields[0].contentFieldValue.data;
+    var subTitle = result.contentFields[1].contentFieldValue.data;
+    var bannerImage = domain + result.contentFields[2].contentFieldValue.image.contentUrl;
     const content = { title, subTitle, bannerImage };
 
     this.setState({ bannerContent: content });
@@ -70,17 +70,17 @@ class RoomProvider extends Component {
   formatLiferayData(data, domain_url) {
     let tempItems = data.items.map((item) => {
       let id = item.id;
-      let name = item.contentFields[0].value.data;
-      let slug = item.contentFields[1].value.data;
-      let price = parseInt(item.contentFields[2].value.data);
-      let type = item.contentFields[3].value.data;
-      let size = item.contentFields[4].value.data;
-      let capacity = parseInt(item.contentFields[5].value.data);
-      let pets = JSON.parse(item.contentFields[6].value.data);
-      let breakfast = JSON.parse(item.contentFields[7].value.data);
-      let featured = item.contentFields[8].value.data;
-      let description = item.contentFields[9].value.data;
-      let extras = JSON.parse(item.contentFields[10].value.data);
+      let name = item.contentFields[0].contentFieldValue.data;
+      let slug = item.contentFields[1].contentFieldValue.data;
+      let price = parseInt(item.contentFields[2].contentFieldValue.data);
+      let type = item.contentFields[3].contentFieldValue.data;
+      let size = item.contentFields[4].contentFieldValue.data;
+      let capacity = parseInt(item.contentFields[5].contentFieldValue.data);
+      let pets = JSON.parse(item.contentFields[6].contentFieldValue.data);
+      let breakfast = JSON.parse(item.contentFields[7].contentFieldValue.data);
+      let featured = item.contentFields[8].contentFieldValue.data;
+      let description = item.contentFields[9].contentFieldValue.data;
+      let extras = JSON.parse(item.contentFields[10].contentFieldValue.data);
       // console.log(
       //   name +
       //     " " +
@@ -103,7 +103,7 @@ class RoomProvider extends Component {
         //  console.log(
         //   "document path" + domain_url + data.value.document.contentUrl
         //  );
-        return domain_url + data.value.document.contentUrl;
+        return domain_url + data.contentFieldValue.document.contentUrl;
       });
 
       let room = {
