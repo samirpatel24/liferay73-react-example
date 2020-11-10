@@ -16,6 +16,7 @@ To get the application working you can do the following:
    1. The resulting string is encoded into an octet sequence. The character set to use for this encoding is by default unspecified, as long as it is compatible with US-ASCII, but the server may suggest use of UTF-8 by sending the charset parameter.
    1. The resulting string is encoded using a variant of Base64.
    1. PRO TIP: You can use postman or curl to see the encoded Authorization header
+   1. PRO TIP: You can set this also as environment variable REACT_APP_Authorization=Basic c2VydmljZV9hY2NvdW50Omx3cG53ZVlBN
 1. Push the updates to your github repo
 1. You can use netlify.app with CI/CD capabilities to run the app online
 1. Make sure to configure netlify with the following build instructions  
